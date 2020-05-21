@@ -7,9 +7,9 @@
 </head>
 <body>
   <main>
-      <div>
-
-      </div>
+    <div>
+      
+    </div>
   </main>
 </body>
 </html>
@@ -28,8 +28,8 @@ socket.onopen = () => {
 
 }
 
-socket.onmessage = (msg) => {
-  console.log('Message exchanged: ', msg); 
+socket.onmessage = (msgEvent) => {
+  console.log('Message exchanged: ', msgEvent.data)  // use JSON.parse()
 }
 
 socket.onclose = (event) => {
