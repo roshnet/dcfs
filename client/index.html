@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golang WebSockets!</title>
+</head>
+<body>
+  <main>
+      <div>
+
+      </div>
+  </main>
+</body>
+</html>
+
+<script>
+
+function pingRegularly(s) {
+  s.send("This is sent via a pinger!")
+}
+
+let socket = new WebSocket('ws://localhost:8080/ws')
+
+socket.onopen = () => {
+  console.log('[CONNECTED]')
+  socket.send('Hello from client, nice to connect!')
+
+}
+
+socket.onmessage = (msg) => {
+  console.log('Message exchanged: ', msg); 
+}
+
+socket.onclose = (event) => {
+  console.log('[CLOSING] ', event)
+  socket.send('Client has closed the connection.')
+}
+
+socket.onerror = (err) => {
+  console.warn('There was an error: ', err)   
+}
+
+</script>
