@@ -13,8 +13,6 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 // wsHandler handles the WebSocket connections
 func wsHandler(w http.ResponseWriter, r *http.Request) {
-	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
-
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(">>>Error in Upgrader<<<", err)
